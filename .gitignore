@@ -2,6 +2,8 @@
 data/raw/
 data/processed/
 !data/.gitignore
+!data/raw/house_prices.csv  # ยกเว้นไฟล์นี้ให้ DVC ติดตาม
+!data/raw/*.dvc
 
 # 📂 Ignore DVC cache
 .dvc/
