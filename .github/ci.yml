@@ -1,0 +1,59 @@
+# name: CI Pipeline
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repo
+#         uses: actions/checkout@v3
+
+#       - name: Set up Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: '3.9'
+
+#       - name: Install dependencies
+#         run: pip install -r requirements.txt
+
+#       - name: Run tests
+#         run: pytest
+
+name: ML Pipeline CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: 🛠️ Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+
+    - name: 📦 Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install dvc dvc[gdrive]  
+
+    - name: 🔄 Pull Data and Model from DVC
+      run: |
+        dvc pull  
+        ls -lah data/processed  
+
+    - name: 🏗 Run Tests
+      run: |
+        pytest tests/ 
+
+    - name: ✅ Finish CI/CD pipeline
+      run: echo "All tests passed!"

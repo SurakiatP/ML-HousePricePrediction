@@ -1,0 +1,50 @@
+name: DVC Pipeline Automation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  dvc_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Set up DVC
+        run: pip install dvc dvc-gdrive
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Pull Data & Model from DVC
+        run: dvc pull
+        env:
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS }}
+
+      - name: Run DVC Pipeline
+        run: dvc repro
+
+      - name: Push Updated Artifacts to DVC
+        run: |
+          dvc push
+          git add .
+          git commit -m "Auto-update DVC artifacts" || echo "No changes to commit"
+          git push origin main
+        env:
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS }}

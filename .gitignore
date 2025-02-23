@@ -1,0 +1,30 @@
+# 💾 Ignore data files (DVC will track these instead)
+data/raw/
+data/processed/
+!data/.gitignore
+
+# 📂 Ignore DVC cache
+.dvc/
+.dvc/cache/
+.dvc/tmp/
+.dvc/config.local
+
+# 🏗 Ignore Python environment
+env/
+venv/
+*.pyc
+__pycache__/
+*.pkl
+*.joblib
+
+# 🔧 Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# 🚀 Ignore model files
+models/*.pkl
+models/*.joblib
+models/*.h5
+
+# 🔑 Ignore credential files (ถ้ามี)
+*.json
+*.yaml
