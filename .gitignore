@@ -2,7 +2,7 @@
 data/raw/
 data/processed/
 !data/.gitignore
-!data/raw/house_prices.csv  # ยกเว้นไฟล์นี้ให้ DVC ติดตาม
+!data/raw/house_prices.csv
 !data/raw/*.dvc
 
 # 📂 Ignore DVC cache
@@ -27,6 +27,6 @@ models/*.pkl
 models/*.joblib
 models/*.h5
 
-# 🔑 Ignore credential files (ถ้ามี)
+# 🔑 Ignore credential files
 *.json
 *.yaml
