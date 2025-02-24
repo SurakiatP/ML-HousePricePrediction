@@ -27,6 +27,7 @@ ML-HousePricePrediction/
 │   ├── train_model.py
 │   ├── evaluate_model.py
 │   ├── inference.py
+│-- text_notebooks.ipynb 
 │-- .dvc/                     
 │-- dvc.yaml                  
 │-- params.yaml               
