@@ -87,10 +87,18 @@ dvc push
   dvc pull
   ```
 
-## 📚 License
-This project is licensed under the **MIT License**.
+## 🤝 Contributing
+Feel free to fork the repository and submit a pull request with improvements.
 
 ---
 
-🚀 Happy Coding! If you have any questions, feel free to open an issue. 😊
+## 📜 License
+This project is licensed under the MIT License.
+
+---
+
+## ✨ Contact
+For questions, reach out at: [surakiat.0723@gmail.com] or connect on [LinkedIn](https://www.linkedin.com/in/surakiat-kansa-ard-171942351/)
+
+---
 
